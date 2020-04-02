@@ -1,11 +1,11 @@
 package memsd
 
 import (
-	"github.com/davyxu/cellmesh/discovery/memsd/model"
-	"github.com/davyxu/cellnet"
-	_ "github.com/davyxu/cellnet/peer/tcp"
-	"github.com/davyxu/cellnet/proc"
-	"github.com/davyxu/cellnet/proc/tcp"
+	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
+	"github.com/bobwong89757/cellnet"
+	_ "github.com/bobwong89757/cellnet/peer/tcp"
+	"github.com/bobwong89757/cellnet/proc"
+	"github.com/bobwong89757/cellnet/proc/tcp"
 )
 
 func init() {

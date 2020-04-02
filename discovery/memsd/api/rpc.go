@@ -2,7 +2,7 @@ package memsd
 
 import (
 	"errors"
-	"github.com/davyxu/cellnet"
+	"github.com/bobwong89757/cellnet"
 	"reflect"
 	"sync"
 	"time"

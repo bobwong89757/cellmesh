@@ -2,7 +2,7 @@ package meshutil
 
 import (
 	"flag"
-	"github.com/davyxu/cellnet/util"
+	"github.com/bobwong89757/cellnet/util"
 )
 
 func ApplyFlagFromFile(fs *flag.FlagSet, filename string) error {

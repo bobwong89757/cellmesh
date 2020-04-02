@@ -2,7 +2,7 @@ package discovery
 
 import (
 	"fmt"
-	"github.com/davyxu/cellnet/util"
+	"github.com/bobwong89757/cellnet/util"
 	"reflect"
 )
 

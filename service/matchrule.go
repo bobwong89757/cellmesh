@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/davyxu/cellmesh/discovery"
-	"github.com/davyxu/cellmesh/util"
+	"github.com/bobwong89757/cellmesh/discovery"
+	"github.com/bobwong89757/cellmesh/util"
 	"strings"
 )
 

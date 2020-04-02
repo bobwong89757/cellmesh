@@ -1,7 +1,7 @@
 package memsd
 
 import (
-	"github.com/davyxu/cellnet"
+	"github.com/bobwong89757/cellnet"
 	"io"
 	"net"
 )

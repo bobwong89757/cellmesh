@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/json"
-	"github.com/davyxu/cellmesh/discovery"
+	"github.com/bobwong89757/cellmesh/discovery"
 	"io"
 	"sort"
 )

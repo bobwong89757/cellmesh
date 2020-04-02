@@ -9,11 +9,11 @@ Protoc=${GOPATH}/bin/protoc
 
 # cellmesh服务绑定
 CellMeshProtoGen=${GOPATH}/bin/cmprotogen
-go build -v -o ${CellMeshProtoGen} github.com/davyxu/cellmesh/tools/protogen
+go build -v -o ${CellMeshProtoGen} github.com/bobwong89757/cellmesh/tools/protogen
 
 # 协议生成
 ProtoPlusGen=${GOPATH}/bin/protoplus
-go build -v -o ${ProtoPlusGen} github.com/davyxu/protoplus
+go build -v -o ${ProtoPlusGen} github.com/bobwong89757/protoplus
 
 cd ${CURRDIR}
 

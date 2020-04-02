@@ -1,8 +1,8 @@
 package memsd
 
 import (
-	"github.com/davyxu/cellmesh/discovery"
-	"github.com/davyxu/cellmesh/discovery/memsd/proto"
+	"github.com/bobwong89757/cellmesh/discovery"
+	"github.com/bobwong89757/cellmesh/discovery/memsd/proto"
 	"strings"
 )
 

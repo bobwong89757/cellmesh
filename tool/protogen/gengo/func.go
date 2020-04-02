@@ -2,8 +2,8 @@ package gengo
 
 import (
 	"github.com/ahmetb/go-linq"
-	"github.com/davyxu/protoplus/gen"
-	"github.com/davyxu/protoplus/model"
+	"github.com/bobwong89757/protoplus/gen"
+	"github.com/bobwong89757/protoplus/model"
 	"sort"
 	"strings"
 	"text/template"

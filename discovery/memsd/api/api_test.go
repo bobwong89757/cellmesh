@@ -1,8 +1,8 @@
 package memsd
 
 import (
-	"github.com/davyxu/cellmesh/discovery"
-	_ "github.com/davyxu/cellnet/peer/tcp"
+	"github.com/bobwong89757/cellmesh/discovery"
+	_ "github.com/bobwong89757/cellnet/peer/tcp"
 	"testing"
 	"time"
 )

@@ -1,11 +1,11 @@
  [![Build Status][3]][4] [![Go Report Card][5]][6] [![MIT licensed][11]][12] [![GoDoc][1]][2]
 
-[1]: https://godoc.org/github.com/davyxu/cellmesh?status.svg
-[2]: https://godoc.org/github.com/davyxu/cellmesh
+[1]: https://godoc.org/github.com/bobwong89757/cellmesh?status.svg
+[2]: https://godoc.org/github.com/bobwong89757/cellmesh
 [3]: https://travis-ci.org/davyxu/cellmesh.svg?branch=master
 [4]: https://travis-ci.org/davyxu/cellmesh
-[5]: https://goreportcard.com/badge/github.com/davyxu/cellmesh
-[6]: https://goreportcard.com/report/github.com/davyxu/cellmesh
+[5]: https://goreportcard.com/badge/github.com/bobwong89757/cellmesh
+[6]: https://goreportcard.com/report/github.com/bobwong89757/cellmesh
 [11]: https://img.shields.io/badge/license-MIT-blue.svg
 [12]: LICENSE
 
@@ -24,7 +24,7 @@
 
 ## Code Generation(代码生成)
 
-   基于github.com/davyxu/protoplus的代码生成技术,迅速粘合逻辑与底层,代码好看易懂且高效.
+   基于github.com/bobwong89757/protoplus的代码生成技术,迅速粘合逻辑与底层,代码好看易懂且高效.
 
    使用更简单更强大的schema编写协议, 并自动生成protobuf schema.
 
@@ -39,13 +39,13 @@
 ## 下载cellmesh源码
 
 ```
-    go get github.com/davyxu/cellmesh
+    go get github.com/bobwong89757/cellmesh
 ```
 
 # cellmesh demo
  demo工程请参见
  
- https://github.com/davyxu/cellmesh_demo
+ https://github.com/bobwong89757/cellmesh_demo
  
  Demo包含服务进程及工具配套等
  
@@ -54,7 +54,7 @@
 ## 服务启动方法
 
 ```
-    go run github.com/davyxu/cellmesh/discovery/memsd
+    go run github.com/bobwong89757/cellmesh/discovery/memsd
 ```
 
 ## 服务启动参数
@@ -75,44 +75,44 @@
 ### 查看注册的服务
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -viewsvc
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -viewsvc
 ```
 
 ### 清空注册的服务
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -clearsvc
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -clearsvc
 ```
  
 ### 查看配置的key
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -viewkey
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -viewkey
 ```
 
 ### 获取配置值
  
 ```
-    go run github.com/davyxu/cellmesh/discovery/memsd -getvalue <key>
+    go run github.com/bobwong89757/cellmesh/discovery/memsd -getvalue <key>
 ```
  
 ### 设置配置值
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -setvalue <key> <value>
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -setvalue <key> <value>
 ```  
   
 ### 删除配置值
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -deletevalue <key>
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -deletevalue <key>
 ```  
   
   
 ### 清空配置
 
 ```
-   go run github.com/davyxu/cellmesh/discovery/memsd -clearvalue
+   go run github.com/bobwong89757/cellmesh/discovery/memsd -clearvalue
 ```
 
 # 概念
@@ -195,7 +195,7 @@ util
 
 - flagfile
 
-   使用FlagFile格式(参考 [LocalFlag](https://github.com/davyxu/cellmesh_demo/blob/master/cfg/LocalFlag.cfg)),作为进程的命令行参数
+   使用FlagFile格式(参考 [LocalFlag](https://github.com/bobwong89757/cellmesh_demo/blob/master/cfg/LocalFlag.cfg)),作为进程的命令行参数
 
 
 # Tips
@@ -214,4 +214,4 @@ util
 
 知乎: http://www.zhihu.com/people/sunicdavy
 
-提交bug及特性: https://github.com/davyxu/cellmesh/issues
+提交bug及特性: https://github.com/bobwong89757/cellmesh/issues

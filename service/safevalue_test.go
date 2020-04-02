@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/davyxu/cellmesh/discovery"
-	memsd "github.com/davyxu/cellmesh/discovery/memsd/api"
+	"github.com/bobwong89757/cellmesh/discovery"
+	memsd "github.com/bobwong89757/cellmesh/discovery/memsd/api"
 	"reflect"
 	"testing"
 )

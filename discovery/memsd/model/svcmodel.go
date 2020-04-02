@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/davyxu/cellmesh/util"
-	"github.com/davyxu/cellnet"
+	"github.com/bobwong89757/cellmesh/util"
+	"github.com/bobwong89757/cellnet"
 	"strings"
 )
 

@@ -2,8 +2,8 @@ package gengo
 
 import (
 	"fmt"
-	"github.com/davyxu/protoplus/codegen"
-	"github.com/davyxu/protoplus/gen"
+	"github.com/bobwong89757/protoplus/codegen"
+	"github.com/bobwong89757/protoplus/gen"
 )
 
 func GenGo(ctx *gen.Context) error {

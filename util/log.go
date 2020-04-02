@@ -1,7 +1,7 @@
 package meshutil
 
 import (
-	"github.com/davyxu/golog"
+	"github.com/bobwong89757/golog"
 	"strconv"
 	"strings"
 )
