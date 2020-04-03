@@ -1,7 +1,7 @@
 github.com/ahmetb/go-linq v3.0.0+incompatible h1:qQkjjOXKrKOTy83X8OpRmnKflXKQIL/mC/gMVVDMhOA=
 github.com/ahmetb/go-linq v3.0.0+incompatible/go.mod h1:PFffvbdbtw+QTB0WKRP0cNht7vnCfnGlEpak/DVg5cY=
-github.com/bobwong89757/cellnet v0.0.3 h1:jdUEIMrqB5rNCgS9ypcOUSvEpi7z+wKRJNeEMcw7Zko=
-github.com/bobwong89757/cellnet v0.0.3/go.mod h1:do2bBktZ4CSaM7urXOcu+W0sQMzJyFeNqTTVg5Fmdp8=
+github.com/bobwong89757/cellnet v0.0.4 h1:peMvAqiJZNQuUXuv0UDyfD2MKIdf2B/ziJBKtkl15WM=
+github.com/bobwong89757/cellnet v0.0.4/go.mod h1:do2bBktZ4CSaM7urXOcu+W0sQMzJyFeNqTTVg5Fmdp8=
 github.com/bobwong89757/golexer v0.1.0 h1:wQB2sDtWhnmAxaOR73PYWM96Aq/Sq66zQwg2AwdDPB8=
 github.com/bobwong89757/golexer v0.1.0/go.mod h1:fl5IIzV273ScYPF1lDgmKiQWQ0/KUO2B6OY75/CK5yI=
 github.com/bobwong89757/golog v0.0.0-20181123013700-3a2ac0a8ba7c/go.mod h1:llAyBWiO/AWi3bS1nki/pVpDswqkvjyvnC6NwKXCeio=
