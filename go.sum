@@ -5,8 +5,9 @@ github.com/bobwong89757/cellnet v0.0.5/go.mod h1:do2bBktZ4CSaM7urXOcu+W0sQMzJyFe
 github.com/bobwong89757/golexer v0.1.0 h1:wQB2sDtWhnmAxaOR73PYWM96Aq/Sq66zQwg2AwdDPB8=
 github.com/bobwong89757/golexer v0.1.0/go.mod h1:fl5IIzV273ScYPF1lDgmKiQWQ0/KUO2B6OY75/CK5yI=
 github.com/bobwong89757/golog v0.0.0-20181123013700-3a2ac0a8ba7c/go.mod h1:llAyBWiO/AWi3bS1nki/pVpDswqkvjyvnC6NwKXCeio=
-github.com/bobwong89757/golog v0.0.0-20200325153011-d9ec9538657a h1:2tnPbSPY6B5KXerKdl7J//JYlu7kfhrhcN4fTWM+vZs=
 github.com/bobwong89757/golog v0.0.0-20200325153011-d9ec9538657a/go.mod h1:lzdMDgWMti/n8gTxuc07c+gdaKJvrqPAOx32BYlJHe0=
+github.com/bobwong89757/golog v0.0.1 h1:vgcfZrxjdNC/XCmxin7mtDR6TH+qZDljjI3oLwCQ2eY=
+github.com/bobwong89757/golog v0.0.1/go.mod h1:lzdMDgWMti/n8gTxuc07c+gdaKJvrqPAOx32BYlJHe0=
 github.com/bobwong89757/goobjfmt v0.1.0 h1:QplvSAyf081PXCliNKiuUqUQFbEYBAvd06BrvamJ4z4=
 github.com/bobwong89757/goobjfmt v0.1.0/go.mod h1:F7M0gNJqg5cwLHYZs3UXOvhOxauoH2KaUNan3bNDW7c=
 github.com/bobwong89757/pbmeta v0.0.2/go.mod h1:LXkdmN9zQYQrjgLivC7eAJRfvmD0SsXy79OJwwt72KE=
