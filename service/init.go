@@ -4,12 +4,9 @@ import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellmesh/discovery/memsd/api"
 	"github.com/bobwong89757/cellmesh/util"
-	"github.com/bobwong89757/cellnet/msglog"
 	"github.com/bobwong89757/cellnet/util"
-	"github.com/bobwong89757/golog"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 )
 
@@ -25,60 +22,6 @@ func Init(name string) {
 	CommandLine.Parse(os.Args[1:])
 
 	LinkRules = ParseMatchRule(getLinkRule())
-
-	// 设置文件日志
-	if *flagLogFile != "" {
-
-		if *flagLogFileSize == "" {
-			log.Infof("LogFile: %s", *flagLogFile)
-			golog.SetOutputToFile(*flagLogFile)
-
-		} else {
-
-			size, err := meshutil.ParseSizeString(*flagLogFileSize)
-			if err == nil {
-				log.Infof("LogFile: %s Size: %s", *flagLogFile, *flagLogFileSize)
-				golog.SetOutputToFile(*flagLogFile, golog.OutputFileOption{
-					MaxFileSize: size,
-				})
-			} else {
-				log.Errorf("log file size err: %s", err)
-			}
-
-		}
-	}
-
-	// 彩色日志
-	if *flagLogColor {
-		golog.SetColorDefine(".", msglog.LogColorDefine)
-		golog.EnableColorLogger(".", true)
-	}
-
-	// 设置日志级别
-	if *flagLogLevel != "" {
-
-		if rawstr := strings.Split(*flagLogLevel, "|"); len(rawstr) == 2 {
-
-			if err := golog.SetLevelByString(rawstr[0], rawstr[1]); err != nil {
-				log.Warnln("SetLevelByString:", err)
-			} else {
-				log.Infoln("SetLevelByString:", rawstr[0], rawstr[1])
-			}
-		} else {
-			log.Errorln("Invalid log level cli fomat, require 'name level'")
-		}
-	}
-
-	// 禁用指定消息名的消息日志
-	if *flagMuteMsgLog != "" {
-
-		if err := msglog.SetMsgLogRule(*flagMuteMsgLog, msglog.MsgLogRule_BlackList); err != nil {
-			log.Errorln("SetMsgLogRule: ", err)
-		} else {
-			log.Infoln("SetMsgLogRule:", *flagMuteMsgLog)
-		}
-	}
-
 }
 
 func getLinkRule() string {
@@ -91,21 +34,21 @@ func getLinkRule() string {
 
 func LogParameter() {
 	workdir, _ := os.Getwd()
-	log.Infof("Execuable: %s", os.Args[0])
-	log.Infof("WorkDir: %s", workdir)
-	log.Infof("ProcName: '%s'", GetProcName())
-	log.Infof("PID: %d", os.Getpid())
-	log.Infof("Discovery: '%s'", *flagDiscoveryAddr)
-	log.Infof("LinkRule: '%s'", getLinkRule())
-	log.Infof("SvcGroup: '%s'", GetSvcGroup())
-	log.Infof("SvcIndex: %d", GetSvcIndex())
-	log.Infof("LANIP: '%s'", util.GetLocalIP())
-	log.Infof("WANIP: '%s'", GetWANIP())
+	log.Info("Execuable: %s", os.Args[0])
+	log.Info("WorkDir: %s", workdir)
+	log.Info("ProcName: '%s'", GetProcName())
+	log.Info("PID: %d", os.Getpid())
+	log.Info("Discovery: '%s'", *flagDiscoveryAddr)
+	log.Info("LinkRule: '%s'", getLinkRule())
+	log.Info("SvcGroup: '%s'", GetSvcGroup())
+	log.Info("SvcIndex: %d", GetSvcIndex())
+	log.Info("LANIP: '%s'", util.GetLocalIP())
+	log.Info("WANIP: '%s'", GetWANIP())
 }
 
 // 连接到服务发现, 建议在service.Init后, 以及服务器逻辑开始前调用
 func ConnectDiscovery() {
-	log.Debugf("Connecting to discovery '%s' ...", *flagDiscoveryAddr)
+	log.Debug("Connecting to discovery '%s' ...", *flagDiscoveryAddr)
 	sdConfig := memsd.DefaultConfig()
 	sdConfig.Address = *flagDiscoveryAddr
 	discovery.Default = memsd.NewDiscovery(sdConfig)

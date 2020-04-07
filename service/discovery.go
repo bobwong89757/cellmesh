@@ -28,7 +28,7 @@ func DiscoveryService(tgtSvcName string, opt DiscoveryOption, peerCreator func(M
 				Filter_MatchSvcGroup(opt.MatchSvcGroup),
 				func(desc *discovery.ServiceDesc) interface{} {
 
-					//log.Infof("found '%s' address '%s' ", tgtSvcName, desc.Address())
+					//log.Info("found '%s' address '%s' ", tgtSvcName, desc.Address())
 
 					prePeer := multiPeer.GetPeer(desc.ID)
 
@@ -38,7 +38,7 @@ func DiscoveryService(tgtSvcName string, opt DiscoveryOption, peerCreator func(M
 						var preDesc *discovery.ServiceDesc
 						if prePeer.(cellnet.ContextSet).FetchContext("sd", &preDesc) && !preDesc.Equals(desc) {
 
-							log.Infof("service '%s' change desc, %+v -> %+v...", desc.ID, preDesc, desc)
+							log.Info("service '%s' change desc, %+v -> %+v...", desc.ID, preDesc, desc)
 
 							// 移除之前的连接
 							multiPeer.RemovePeer(desc.ID)

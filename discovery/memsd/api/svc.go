@@ -97,7 +97,7 @@ func (self *memDiscovery) triggerNotify(mode string, timeout time.Duration) {
 			case c <- struct{}{}:
 			case <-time.After(timeout):
 				// 接收通知阻塞太久，或者没有释放侦听的channel
-				log.Errorf("notify(%s) timeout, not free? regstack: %s", ctx.mode, ctx.stack)
+				log.Error("notify(%s) timeout, not free? regstack: %s", ctx.mode, ctx.stack)
 			}
 		}
 
@@ -140,7 +140,7 @@ func (self *memDiscovery) updateSvcCache(svcName string, value []byte) {
 	var desc discovery.ServiceDesc
 	err := json.Unmarshal(value, &desc)
 	if err != nil {
-		log.Errorf("ServiceDesc unmarshal failed, %s", err)
+		log.Error("ServiceDesc unmarshal failed, %s", err)
 		self.svcCacheGuard.Unlock()
 		return
 	}

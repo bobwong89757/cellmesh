@@ -8,11 +8,11 @@ import (
 	"github.com/bobwong89757/cellnet"
 	"github.com/bobwong89757/cellnet/peer"
 	"github.com/bobwong89757/cellnet/proc"
-	"github.com/bobwong89757/golog"
+	"github.com/bobwong89757/golog/logs"
 	"strings"
 )
 
-var log = golog.New("memsd")
+var log = logs.GetBeeLogger()
 
 func startSvc() {
 
@@ -76,9 +76,9 @@ func deleteNotify(key, reason string) {
 	if valueMeta != nil {
 
 		if valueMeta.SvcName == "" {
-			log.Infof("DeleteValue '%s'  reason: %s", key, reason)
+			log.Info("DeleteValue '%s'  reason: %s", key, reason)
 		} else {
-			log.Infof("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
+			log.Info("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
 		}
 	}
 

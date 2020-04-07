@@ -1,12 +1,12 @@
 package meshutil
 
 import (
-	"github.com/bobwong89757/golog"
+	"github.com/bobwong89757/golog/logs"
 	"strconv"
 	"strings"
 )
 
-var log = golog.New("meshutil")
+var log = logs.GetBeeLogger()
 
 func sizeLevel(sizeStr, levelStr string, multi int, sizePtr *int, errPtr *error) bool {
 	if strings.HasSuffix(sizeStr, levelStr) {

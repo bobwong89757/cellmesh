@@ -43,7 +43,7 @@ func Register(p cellnet.Peer, options ...interface{}) *discovery.ServiceDesc {
 		sd.SetMeta("WANAddress", util.JoinAddress(GetWANIP(), sd.Port))
 	}
 
-	log.SetColor("green").Debugf("service '%s' listen at port: %d", sd.ID, sd.Port)
+	log.Debug("service '%s' listen at port: %d", sd.ID, sd.Port)
 
 	p.(cellnet.ContextSet).SetContext("sd", sd)
 
@@ -51,7 +51,7 @@ func Register(p cellnet.Peer, options ...interface{}) *discovery.ServiceDesc {
 	discovery.Default.Deregister(sd.ID)
 	err := discovery.Default.Register(sd)
 	if err != nil {
-		log.Errorf("service register failed, %s %s", sd.String(), err.Error())
+		log.Error("service register failed, %s %s", sd.String(), err.Error())
 	}
 
 	return sd

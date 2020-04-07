@@ -34,9 +34,9 @@ func init() {
 		model.SetValue(msg.Key, meta)
 
 		if model.IsServiceKey(msg.Key) {
-			log.Infof("RegisterService '%s'", meta.ValueAsServiceDesc().ID)
+			log.Info("RegisterService '%s'", meta.ValueAsServiceDesc().ID)
 		} else {
-			log.Infof("SetValue '%s' value(size:%d)", msg.Key, len(msg.Value))
+			log.Info("SetValue '%s' value(size:%d)", msg.Key, len(msg.Value))
 		}
 
 		model.Broadcast(&proto.ValueChangeNotifyACK{
@@ -130,7 +130,7 @@ func init() {
 			return
 		}
 
-		log.Infoln("ClearSvc")
+		log.Info("ClearSvc")
 
 		var svcToDelete []*model.ValueMeta
 		model.VisitValue(func(meta *model.ValueMeta) bool {
@@ -158,7 +158,7 @@ func init() {
 			return
 		}
 
-		log.Infoln("ClearValue")
+		log.Info("ClearValue")
 
 		var svcToDelete []*model.ValueMeta
 		model.VisitValue(func(meta *model.ValueMeta) bool {

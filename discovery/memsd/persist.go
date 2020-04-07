@@ -15,15 +15,15 @@ func loadPersistFile(fileName string) {
 		return
 	}
 
-	log.Infoln("Load values...")
+	log.Info("Load values...")
 
 	err = model.LoadValue(fileHandle)
 	if err != nil {
-		log.Errorf("load values failed: %s %s", fileName, err.Error())
+		log.Error("load values failed: %s %s", fileName, err.Error())
 		return
 	}
 
-	log.Infof("Load %d values", model.ValueCount())
+	log.Info("Load %d values", model.ValueCount())
 }
 
 func startPersistCheck(fileName string) {
@@ -39,22 +39,22 @@ func startPersistCheck(fileName string) {
 
 			if model.ValueDirty {
 
-				log.Infoln("Save values...")
+				log.Info("Save values...")
 
 				fileHandle, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0666)
 				if err != nil {
-					log.Errorf("save persist file failed: %s %s", fileName, err.Error())
+					log.Error("save persist file failed: %s %s", fileName, err.Error())
 					return
 				}
 
 				err = model.SaveValue(fileHandle)
 
 				if err != nil {
-					log.Errorf("save values failed: %s %s", fileName, err.Error())
+					log.Error("save values failed: %s %s", fileName, err.Error())
 					return
 				}
 
-				log.Infof("Save %d values", model.ValueCount())
+				log.Info("Save %d values", model.ValueCount())
 
 				model.ValueDirty = false
 
