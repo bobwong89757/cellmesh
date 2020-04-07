@@ -1,11 +1,5 @@
 package service
 
-import (
-	flag2 "flag"
-	"fmt"
-	"github.com/bobwong89757/cellmesh/helpers"
-)
-
 var (
 	flagDiscoveryAddr string
 	flagLinkRule string
@@ -15,12 +9,7 @@ var (
 	flagCommType string
 )
 
-func init() {
-	config := flag2.String("config", "development", "runtime config type")
-	flag2.Parse()
-	helpers.MConfig.InitConfig(fmt.Sprintf("./cfg/%s.yml", *config))
-	serviceConf := helpers.MConfig.Get("svc")
-
+func InitServerConfig(serviceConf map[string]string) {
 	// 服务发现地址
 	flagDiscoveryAddr = serviceConf["sdaddr"]
 
