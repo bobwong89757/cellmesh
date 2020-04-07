@@ -12,17 +12,17 @@ func GetProcName() string {
 
 // 获取外网IP
 func GetWANIP() string {
-	return *flagWANIP
+	return flagWANIP
 }
 
 func GetSvcGroup() string {
-	return *flagSvcGroup
+	return flagSvcGroup
 }
 
-func GetSvcIndex() int {
-	return *flagSvcIndex
+func GetSvcIndex() string {
+	return flagSvcIndex
 }
 
 func GetDiscoveryAddr() string {
-	return *flagDiscoveryAddr
+	return flagDiscoveryAddr
 }

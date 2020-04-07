@@ -4,7 +4,6 @@ import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellnet"
 	"github.com/bobwong89757/cellnet/util"
-	"strconv"
 )
 
 type peerListener interface {
@@ -27,7 +26,7 @@ func Register(p cellnet.Peer, options ...interface{}) *discovery.ServiceDesc {
 	}
 
 	sd.SetMeta("SvcGroup", GetSvcGroup())
-	sd.SetMeta("SvcIndex", strconv.Itoa(GetSvcIndex()))
+	sd.SetMeta("SvcIndex", GetSvcIndex())
 
 	for _, opt := range options {
 
