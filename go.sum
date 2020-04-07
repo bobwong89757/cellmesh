@@ -10,6 +10,8 @@ github.com/bobwong89757/cellnet v0.0.5 h1:1FpJvYFBKzAaA1jfxYinLsBi/kLv5D+r6kIrHh
 github.com/bobwong89757/cellnet v0.0.5/go.mod h1:do2bBktZ4CSaM7urXOcu+W0sQMzJyFeNqTTVg5Fmdp8=
 github.com/bobwong89757/cellnet v0.0.6 h1:UqvKtOwHn4OxAcOXb2Mfohh8oz72fcdKH20u6jrIB+o=
 github.com/bobwong89757/cellnet v0.0.6/go.mod h1:tpfzIVVkETPpw360oN24Zeur83yeKRXBvpKMcx225s0=
+github.com/bobwong89757/cellnet v0.0.7 h1:Ude4yv8olUMy+CD7akvqRLWuJOIW8dugioFIf6bB21w=
+github.com/bobwong89757/cellnet v0.0.7/go.mod h1:tpfzIVVkETPpw360oN24Zeur83yeKRXBvpKMcx225s0=
 github.com/bobwong89757/golexer v0.1.0 h1:wQB2sDtWhnmAxaOR73PYWM96Aq/Sq66zQwg2AwdDPB8=
 github.com/bobwong89757/golexer v0.1.0/go.mod h1:fl5IIzV273ScYPF1lDgmKiQWQ0/KUO2B6OY75/CK5yI=
 github.com/bobwong89757/golog v0.0.0-20181123013700-3a2ac0a8ba7c/go.mod h1:llAyBWiO/AWi3bS1nki/pVpDswqkvjyvnC6NwKXCeio=
