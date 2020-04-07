@@ -15,7 +15,8 @@ func MakeSvcID(svcName string, svcIndex int, svcGroup string) string {
 
 // 构造指定服务的ID
 func MakeLocalSvcID(svcName string) string {
-	return MakeSvcID(svcName, *flagSvcIndex, *flagSvcGroup)
+	index,_ := strconv.Atoi(flagSvcIndex)
+	return MakeSvcID(svcName,index, flagSvcGroup)
 }
 
 // 获得本进程的服务id
