@@ -26,3 +26,7 @@ func GetSvcIndex() string {
 func GetDiscoveryAddr() string {
 	return flagDiscoveryAddr
 }
+
+func GetCommtype() string {
+	return flagCommType
+}

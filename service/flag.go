@@ -12,6 +12,7 @@ var (
 	flagSvcGroup string
 	flagSvcIndex string
 	flagWANIP string
+	flagCommType string
 )
 
 func init() {
@@ -34,4 +35,7 @@ func init() {
 
 	// 设置外网IP
 	flagWANIP = serviceConf["wanip"]
+
+	// 通讯类型
+	flagCommType = serviceConf["commtype"]
 }
