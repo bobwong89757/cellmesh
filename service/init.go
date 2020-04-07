@@ -3,7 +3,6 @@ package service
 import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellmesh/discovery/memsd/api"
-	"github.com/bobwong89757/cellmesh/util"
 	"github.com/bobwong89757/cellnet/util"
 	"os"
 	"os/signal"
@@ -11,24 +10,15 @@ import (
 )
 
 func Init(name string) {
-
 	procName = name
-
-	CommandLine.Parse(os.Args[1:])
-
-	// 开发期优先从LocalFlag作用flag
-	meshutil.ApplyFlagFromFile(CommandLine, *flagFlagFile)
-
-	CommandLine.Parse(os.Args[1:])
-
 	LinkRules = ParseMatchRule(getLinkRule())
 }
 
 func getLinkRule() string {
-	if *flagLinkRule == "" {
-		return *flagSvcGroup
+	if flagLinkRule == "" {
+		return flagSvcGroup
 	} else {
-		return *flagLinkRule
+		return flagLinkRule
 	}
 }
 
@@ -38,7 +28,7 @@ func LogParameter() {
 	log.Info("WorkDir: %s", workdir)
 	log.Info("ProcName: '%s'", GetProcName())
 	log.Info("PID: %d", os.Getpid())
-	log.Info("Discovery: '%s'", *flagDiscoveryAddr)
+	log.Info("Discovery: '%s'", flagDiscoveryAddr)
 	log.Info("LinkRule: '%s'", getLinkRule())
 	log.Info("SvcGroup: '%s'", GetSvcGroup())
 	log.Info("SvcIndex: %d", GetSvcIndex())
@@ -48,9 +38,9 @@ func LogParameter() {
 
 // 连接到服务发现, 建议在service.Init后, 以及服务器逻辑开始前调用
 func ConnectDiscovery() {
-	log.Debug("Connecting to discovery '%s' ...", *flagDiscoveryAddr)
+	log.Debug("Connecting to discovery '%s' ...", flagDiscoveryAddr)
 	sdConfig := memsd.DefaultConfig()
-	sdConfig.Address = *flagDiscoveryAddr
+	sdConfig.Address = flagDiscoveryAddr
 	discovery.Default = memsd.NewDiscovery(sdConfig)
 }
 
