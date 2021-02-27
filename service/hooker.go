@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	_ "github.com/bobwong89757/cellnet/peer/tcp"
 	"github.com/bobwong89757/cellnet/proc"
 	"github.com/bobwong89757/cellnet/proc/tcp"
@@ -38,7 +39,7 @@ func (SvcEventHooker) OnInboundEvent(inputEvent cellnet.Event) (outputEvent cell
 			AddRemoteService(inputEvent.Session(), sd.ID, sd.Name)
 		} else {
 
-			log.Error("Make sure call multi.AddPeer before peer.Start, peer: %s", inputEvent.Session().Peer().TypeName())
+			log.GetLog().Error("Make sure call multi.AddPeer before peer.Start, peer: %s", inputEvent.Session().Peer().TypeName())
 		}
 
 	case *cellnet.SessionClosed:

@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	"sync"
 )
 
@@ -25,7 +26,7 @@ func AddRemoteService(ses cellnet.Session, svcid, name string) {
 	connBySvcID[svcid] = ses
 	connBySvcNameGuard.Unlock()
 
-	log.Info("remote service added: '%s' sid: %d", svcid, ses.ID())
+	log.GetLog().Info("remote service added: '%s' sid: %d", svcid, ses.ID())
 }
 
 func RemoveRemoteService(ses cellnet.Session) {
@@ -45,9 +46,9 @@ func RemoveRemoteService(ses cellnet.Session) {
 		delete(connBySvcID, ctx.SvcID)
 		connBySvcNameGuard.Unlock()
 
-		log.Info("remote service removed '%s' sid: %d", ctx.SvcID, ses.ID())
+		log.GetLog().Info("remote service removed '%s' sid: %d", ctx.SvcID, ses.ID())
 	} else {
-		log.Info("remote service removed sid: %d, context lost", ses.ID())
+		log.GetLog().Info("remote service removed sid: %d, context lost", ses.ID())
 	}
 }
 

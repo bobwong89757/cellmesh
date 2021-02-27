@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	"github.com/bobwong89757/cellnet/util"
 )
 
@@ -42,7 +43,7 @@ func Register(p cellnet.Peer, options ...interface{}) *discovery.ServiceDesc {
 		sd.SetMeta("WANAddress", util.JoinAddress(GetWANIP(), sd.Port))
 	}
 
-	log.Debug("service '%s' listen at port: %d", sd.ID, sd.Port)
+	log.GetLog().Debug("service '%s' listen at port: %d", sd.ID, sd.Port)
 
 	p.(cellnet.ContextSet).SetContext("sd", sd)
 
@@ -50,7 +51,7 @@ func Register(p cellnet.Peer, options ...interface{}) *discovery.ServiceDesc {
 	discovery.Default.Deregister(sd.ID)
 	err := discovery.Default.Register(sd)
 	if err != nil {
-		log.Error("service register failed, %s %s", sd.String(), err.Error())
+		log.GetLog().Error("service register failed, %s %s", sd.String(), err.Error())
 	}
 
 	return sd

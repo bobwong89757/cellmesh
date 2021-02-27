@@ -5,6 +5,7 @@ import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
 	"github.com/bobwong89757/cellmesh/discovery/memsd/proto"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	"github.com/bobwong89757/cellnet/peer"
 	"github.com/bobwong89757/cellnet/proc"
 	"time"
@@ -38,7 +39,7 @@ func (self *memDiscovery) connect(addr string) {
 			})
 		case *cellnet.SessionClosed:
 			self.token = ""
-			log.Error("memsd discovery lost!")
+			log.GetLog().Error("memsd discovery lost!")
 
 		case *proto.AuthACK:
 
@@ -49,7 +50,7 @@ func (self *memDiscovery) connect(addr string) {
 				self.initWg.Done()
 			}
 
-			log.Info("memsd discovery ready!")
+			log.GetLog().Info("memsd discovery ready!")
 
 			self.triggerNotify("ready", 0)
 

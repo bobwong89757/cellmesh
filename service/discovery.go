@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/bobwong89757/cellmesh/discovery"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 )
 
 type DiscoveryOption struct {
@@ -38,7 +39,7 @@ func DiscoveryService(tgtSvcName string, opt DiscoveryOption, peerCreator func(M
 						var preDesc *discovery.ServiceDesc
 						if prePeer.(cellnet.ContextSet).FetchContext("sd", &preDesc) && !preDesc.Equals(desc) {
 
-							log.Info("service '%s' change desc, %+v -> %+v...", desc.ID, preDesc, desc)
+							log.GetLog().Info("service '%s' change desc, %+v -> %+v...", desc.ID, preDesc, desc)
 
 							// 移除之前的连接
 							multiPeer.RemovePeer(desc.ID)

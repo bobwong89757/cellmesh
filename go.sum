@@ -12,6 +12,8 @@ github.com/bobwong89757/cellnet v0.0.6 h1:UqvKtOwHn4OxAcOXb2Mfohh8oz72fcdKH20u6j
 github.com/bobwong89757/cellnet v0.0.6/go.mod h1:tpfzIVVkETPpw360oN24Zeur83yeKRXBvpKMcx225s0=
 github.com/bobwong89757/cellnet v0.0.7 h1:Ude4yv8olUMy+CD7akvqRLWuJOIW8dugioFIf6bB21w=
 github.com/bobwong89757/cellnet v0.0.7/go.mod h1:tpfzIVVkETPpw360oN24Zeur83yeKRXBvpKMcx225s0=
+github.com/bobwong89757/cellnet v0.0.9 h1:RHqsZ8T+0qcH98OamnU3rGwdx3QlVCRySRdjSl5FAFk=
+github.com/bobwong89757/cellnet v0.0.9/go.mod h1:tpfzIVVkETPpw360oN24Zeur83yeKRXBvpKMcx225s0=
 github.com/bobwong89757/gnbutils v0.0.2 h1:QWiVoIxk9ZKxgszvmXU+fCpAb3cGj28spwieLvQQx5I=
 github.com/bobwong89757/gnbutils v0.0.2/go.mod h1:9fWTo6MbWKqKvexQ29ikFfEFeA+YGl6i5bE96j7Fwo0=
 github.com/bobwong89757/golexer v0.1.0 h1:wQB2sDtWhnmAxaOR73PYWM96Aq/Sq66zQwg2AwdDPB8=
@@ -20,6 +22,7 @@ github.com/bobwong89757/golog v0.0.0-20181123013700-3a2ac0a8ba7c/go.mod h1:llAyB
 github.com/bobwong89757/golog v0.0.0-20200325153011-d9ec9538657a/go.mod h1:lzdMDgWMti/n8gTxuc07c+gdaKJvrqPAOx32BYlJHe0=
 github.com/bobwong89757/golog v0.0.1 h1:vgcfZrxjdNC/XCmxin7mtDR6TH+qZDljjI3oLwCQ2eY=
 github.com/bobwong89757/golog v0.0.1/go.mod h1:lzdMDgWMti/n8gTxuc07c+gdaKJvrqPAOx32BYlJHe0=
+github.com/bobwong89757/golog v0.0.2 h1:rVjZwp4UyaqKJvov1R0x6BbKYO9l51I6AsLY8zdiwug=
 github.com/bobwong89757/golog v0.0.2/go.mod h1:ZapS/614lY9rRRfr/185LjM/I2FjgZvaVas9KsT1azs=
 github.com/bobwong89757/goobjfmt v0.1.0 h1:QplvSAyf081PXCliNKiuUqUQFbEYBAvd06BrvamJ4z4=
 github.com/bobwong89757/goobjfmt v0.1.0/go.mod h1:F7M0gNJqg5cwLHYZs3UXOvhOxauoH2KaUNan3bNDW7c=
@@ -57,6 +60,7 @@ github.com/mediocregopher/radix.v2 v0.0.0-20181115013041-b67df6e626f9/go.mod h1:
 github.com/pelletier/go-toml v1.2.0/go.mod h1:5z9KED0ma1S8pY6P1sdut58dfprrGBbd/94hg7ilaic=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 h1:X+yvsM2yrEktyI+b2qND5gpH8YhURn0k8OCaeRnkINo=
 github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644/go.mod h1:nkxAfR/5quYxwPZhyDxgasBMnRtBZd0FCEpawpjMUFg=
 github.com/siddontang/go v0.0.0-20180604090527-bdc77568d726/go.mod h1:3yhqj7WBBfRhbBlzyOC3gUxftwsU0u8gqevxwIHQpMw=
 github.com/siddontang/ledisdb v0.0.0-20181029004158-becf5f38d373/go.mod h1:mF1DpOSOUiJRMR+FDqaqu3EBqrybQtrDDszLUZ6oxPg=
@@ -78,7 +82,9 @@ golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/tools v0.0.0-20181030221726-6c7e314b6563/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 golang.org/x/tools v0.0.0-20200117065230-39095c1d176c/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.2.1/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
+gopkg.in/yaml.v2 v2.2.8 h1:obN1ZagJSUGI0Ek/LBmuj4SNLPfIny3KsKFopxRdj10=
 gopkg.in/yaml.v2 v2.2.8/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
