@@ -6,15 +6,13 @@ import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/proto"
 	"github.com/bobwong89757/cellmesh/service"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	"github.com/bobwong89757/cellnet/peer"
 	"github.com/bobwong89757/cellnet/proc"
-	"github.com/bobwong89757/golog/logs"
 	"strings"
 )
 
-var log = logs.GetBeeLogger()
-
-func startSvc() {
+func StartSvc() {
 
 	config := memsd.DefaultConfig()
 	if *flagAddr != "" {
@@ -76,9 +74,9 @@ func deleteNotify(key, reason string) {
 	if valueMeta != nil {
 
 		if valueMeta.SvcName == "" {
-			log.Info("DeleteValue '%s'  reason: %s", key, reason)
+			log.GetLog().Info("DeleteValue '%s'  reason: %s", key, reason)
 		} else {
-			log.Info("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
+			log.GetLog().Info("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
 		}
 	}
 

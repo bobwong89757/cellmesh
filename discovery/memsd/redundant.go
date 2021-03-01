@@ -6,7 +6,7 @@ import (
 )
 
 // 移除token丢失的values
-func startCheckRedundantValue() {
+func StartCheckRedundantValue() {
 
 	ticker := time.NewTicker(time.Minute)
 

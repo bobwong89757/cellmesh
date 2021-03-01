@@ -2,11 +2,12 @@ package main
 
 import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
+	"github.com/bobwong89757/cellnet/log"
 	"os"
 	"time"
 )
 
-func loadPersistFile(fileName string) {
+func LoadPersistFile(fileName string) {
 
 	fileHandle, err := os.OpenFile(fileName, os.O_RDONLY, 0666)
 
@@ -15,18 +16,18 @@ func loadPersistFile(fileName string) {
 		return
 	}
 
-	log.Info("Load values...")
+	log.GetLog().Info("Load values...")
 
 	err = model.LoadValue(fileHandle)
 	if err != nil {
-		log.Error("load values failed: %s %s", fileName, err.Error())
+		log.GetLog().Error("load values failed: %s %s", fileName, err.Error())
 		return
 	}
 
-	log.Info("Load %d values", model.ValueCount())
+	log.GetLog().Info("Load %d values", model.ValueCount())
 }
 
-func startPersistCheck(fileName string) {
+func StartPersistCheck(fileName string) {
 
 	ticker := time.NewTicker(time.Minute)
 
@@ -39,22 +40,22 @@ func startPersistCheck(fileName string) {
 
 			if model.ValueDirty {
 
-				log.Info("Save values...")
+				log.GetLog().Info("Save values...")
 
 				fileHandle, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0666)
 				if err != nil {
-					log.Error("save persist file failed: %s %s", fileName, err.Error())
+					log.GetLog().Error("save persist file failed: %s %s", fileName, err.Error())
 					return
 				}
 
 				err = model.SaveValue(fileHandle)
 
 				if err != nil {
-					log.Error("save values failed: %s %s", fileName, err.Error())
+					log.GetLog().Error("save values failed: %s %s", fileName, err.Error())
 					return
 				}
 
-				log.Info("Save %d values", model.ValueCount())
+				log.GetLog().Info("Save %d values", model.ValueCount())
 
 				model.ValueDirty = false
 

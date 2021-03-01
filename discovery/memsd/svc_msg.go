@@ -4,6 +4,7 @@ import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
 	"github.com/bobwong89757/cellmesh/discovery/memsd/proto"
 	"github.com/bobwong89757/cellnet"
+	"github.com/bobwong89757/cellnet/log"
 	"strconv"
 )
 
@@ -34,9 +35,9 @@ func init() {
 		model.SetValue(msg.Key, meta)
 
 		if model.IsServiceKey(msg.Key) {
-			log.Info("RegisterService '%s'", meta.ValueAsServiceDesc().ID)
+			log.GetLog().Info("RegisterService '%s'", meta.ValueAsServiceDesc().ID)
 		} else {
-			log.Info("SetValue '%s' value(size:%d)", msg.Key, len(msg.Value))
+			log.GetLog().Info("SetValue '%s' value(size:%d)", msg.Key, len(msg.Value))
 		}
 
 		model.Broadcast(&proto.ValueChangeNotifyACK{
@@ -130,7 +131,7 @@ func init() {
 			return
 		}
 
-		log.Info("ClearSvc")
+		log.GetLog().Info("ClearSvc")
 
 		var svcToDelete []*model.ValueMeta
 		model.VisitValue(func(meta *model.ValueMeta) bool {
@@ -158,7 +159,7 @@ func init() {
 			return
 		}
 
-		log.Info("ClearValue")
+		log.GetLog().Info("ClearValue")
 
 		var svcToDelete []*model.ValueMeta
 		model.VisitValue(func(meta *model.ValueMeta) bool {

@@ -1,4 +1,4 @@
-package main
+package deps
 
 import (
 	"fmt"
@@ -6,9 +6,9 @@ import (
 	"sort"
 )
 
-func ViewSvc() {
+func ViewSvc(flagAddr *string) {
 
-	sd := initSD()
+	sd := InitSD(flagAddr)
 
 	list := sd.QueryAll()
 
@@ -38,8 +38,8 @@ func ViewSvc() {
 	}
 }
 
-func ViewKey() {
-	sd := initSD()
+func ViewKey(flagAddr *string) {
+	sd := InitSD(flagAddr)
 	list := sd.GetRawValueList("")
 	sort.Slice(list, func(i, j int) bool {
 
@@ -54,8 +54,8 @@ func ViewKey() {
 	}
 }
 
-func GetValue(key string) {
-	sd := initSD()
+func GetValue(flagAddr *string,key string) {
+	sd := InitSD(flagAddr)
 	var value string
 	err := sd.GetValue(key, &value)
 	if err != nil {
@@ -66,8 +66,8 @@ func GetValue(key string) {
 	fmt.Println(value)
 }
 
-func SetValue(key, value string) {
-	sd := initSD()
+func SetValue(flagAddr *string,key, value string) {
+	sd := InitSD(flagAddr)
 	err := sd.SetValue(key, value)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -75,20 +75,20 @@ func SetValue(key, value string) {
 	}
 }
 
-func ClearSvc() {
+func ClearSvc(flagAddr *string) {
 
-	sd := initSD()
+	sd := InitSD(flagAddr)
 	sd.ClearService()
 }
 
-func ClearValue() {
+func ClearValue(flagAddr *string) {
 
-	sd := initSD()
+	sd := InitSD(flagAddr)
 	sd.ClearKey()
 }
 
-func DeleteValue(key string) {
+func DeleteValue(flagAddr *string,key string) {
 
-	sd := initSD()
+	sd := InitSD(flagAddr)
 	sd.DeleteValue(key)
 }
