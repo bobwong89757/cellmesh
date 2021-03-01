@@ -1,4 +1,4 @@
-package main
+package deps
 
 import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/api"
@@ -12,11 +12,11 @@ import (
 	"strings"
 )
 
-func StartSvc() {
+func StartSvc(arg *string) {
 
 	config := memsd.DefaultConfig()
-	if *flagAddr != "" {
-		config.Address = *flagAddr
+	if *arg != "" {
+		config.Address = *arg
 	}
 
 	model.Queue = cellnet.NewEventQueue()
@@ -44,7 +44,7 @@ func StartSvc() {
 	service.WaitExitSignal()
 }
 
-func deleteValueRecurse(key, reason string) {
+func DeleteValueRecurse(key, reason string) {
 
 	var keyToDelete []string
 	model.VisitValue(func(meta *model.ValueMeta) bool {
@@ -57,11 +57,11 @@ func deleteValueRecurse(key, reason string) {
 	})
 
 	for _, key := range keyToDelete {
-		deleteNotify(key, reason)
+		DeleteNotify(key, reason)
 	}
 }
 
-func deleteNotify(key, reason string) {
+func DeleteNotify(key, reason string) {
 	valueMeta := model.DeleteValue(key)
 
 	var ack proto.ValueDeleteNotifyACK
@@ -84,7 +84,7 @@ func deleteNotify(key, reason string) {
 
 }
 
-func checkAuth(ses cellnet.Session) bool {
+func CheckAuth(ses cellnet.Session) bool {
 
 	return model.GetSessionToken(ses) != ""
 }

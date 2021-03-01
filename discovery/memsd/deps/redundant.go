@@ -1,4 +1,4 @@
-package main
+package deps
 
 import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
@@ -29,7 +29,7 @@ func StartCheckRedundantValue() {
 			})
 
 			for _, meta := range svcToDelete {
-				deleteNotify(meta.Key, "check redundant")
+				DeleteNotify(meta.Key, "check redundant")
 			}
 		})
 	}

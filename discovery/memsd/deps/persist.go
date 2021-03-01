@@ -1,4 +1,4 @@
-package main
+package deps
 
 import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"

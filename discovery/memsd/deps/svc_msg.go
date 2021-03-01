@@ -1,4 +1,4 @@
-package main
+package deps
 
 import (
 	"github.com/bobwong89757/cellmesh/discovery/memsd/model"
@@ -13,7 +13,7 @@ func init() {
 	proto.Handle_Memsd_SetValueREQ = func(ev cellnet.Event) {
 		msg := ev.Message().(*proto.SetValueREQ)
 
-		if !checkAuth(ev.Session()) {
+		if !CheckAuth(ev.Session()) {
 
 			ev.Session().Send(&proto.SetValueACK{
 				Code: proto.ResultCode_Result_AuthRequire,
@@ -53,7 +53,7 @@ func init() {
 	proto.Handle_Memsd_GetValueREQ = func(ev cellnet.Event) {
 		msg := ev.Message().(*proto.GetValueREQ)
 
-		if !checkAuth(ev.Session()) {
+		if !CheckAuth(ev.Session()) {
 
 			ev.Session().Send(&proto.GetValueACK{
 				Code: proto.ResultCode_Result_AuthRequire,
@@ -79,7 +79,7 @@ func init() {
 	proto.Handle_Memsd_DeleteValueREQ = func(ev cellnet.Event) {
 		msg := ev.Message().(*proto.DeleteValueREQ)
 
-		if !checkAuth(ev.Session()) {
+		if !CheckAuth(ev.Session()) {
 
 			ev.Session().Send(&proto.DeleteValueACK{
 				Code: proto.ResultCode_Result_AuthRequire,
@@ -87,7 +87,7 @@ func init() {
 			return
 		}
 
-		deleteValueRecurse(msg.Key, "api")
+		DeleteValueRecurse(msg.Key, "api")
 
 		ev.Session().Send(&proto.DeleteValueACK{
 			Key: msg.Key,
@@ -124,7 +124,7 @@ func init() {
 
 	proto.Handle_Memsd_ClearSvcREQ = func(ev cellnet.Event) {
 
-		if !checkAuth(ev.Session()) {
+		if !CheckAuth(ev.Session()) {
 			ev.Session().Send(&proto.ClearSvcACK{
 				Code: proto.ResultCode_Result_AuthRequire,
 			})
@@ -144,7 +144,7 @@ func init() {
 		})
 
 		for _, meta := range svcToDelete {
-			deleteNotify(meta.Key, "clearsvc")
+			DeleteNotify(meta.Key, "clearsvc")
 		}
 
 		ev.Session().Send(&proto.ClearSvcACK{})
@@ -152,7 +152,7 @@ func init() {
 
 	proto.Handle_Memsd_ClearKeyREQ = func(ev cellnet.Event) {
 
-		if !checkAuth(ev.Session()) {
+		if !CheckAuth(ev.Session()) {
 			ev.Session().Send(&proto.ClearKeyACK{
 				Code: proto.ResultCode_Result_AuthRequire,
 			})
@@ -172,7 +172,7 @@ func init() {
 		})
 
 		for _, meta := range svcToDelete {
-			deleteNotify(meta.Key, "clearkey")
+			DeleteNotify(meta.Key, "clearkey")
 		}
 
 		ev.Session().Send(&proto.ClearKeyACK{})
@@ -185,7 +185,7 @@ func init() {
 
 		case *cellnet.SessionClosed:
 
-			if checkAuth(ev.Session()) {
+			if CheckAuth(ev.Session()) {
 				var svcToDelete []*model.ValueMeta
 				model.VisitValue(func(meta *model.ValueMeta) bool {
 
@@ -202,7 +202,7 @@ func init() {
 				})
 
 				for _, meta := range svcToDelete {
-					deleteNotify(meta.Key, "offline")
+					DeleteNotify(meta.Key, "offline")
 				}
 			}
 
