@@ -25,21 +25,21 @@ func getLinkRule() string {
 
 func LogParameter() {
 	workdir, _ := os.Getwd()
-	log.GetLog().Info("Execuable: %s", os.Args[0])
-	log.GetLog().Info("WorkDir: %s", workdir)
-	log.GetLog().Info("ProcName: '%s'", GetProcName())
-	log.GetLog().Info("PID: %d", os.Getpid())
-	log.GetLog().Info("Discovery: '%s'", flagDiscoveryAddr)
-	log.GetLog().Info("LinkRule: '%s'", getLinkRule())
-	log.GetLog().Info("SvcGroup: '%s'", GetSvcGroup())
-	log.GetLog().Info("SvcIndex: %d", GetSvcIndex())
-	log.GetLog().Info("LANIP: '%s'", util.GetLocalIP())
-	log.GetLog().Info("WANIP: '%s'", GetWANIP())
+	log.GetLog().Infof("Execuable: %s", os.Args[0])
+	log.GetLog().Infof("WorkDir: %s", workdir)
+	log.GetLog().Infof("ProcName: '%s'", GetProcName())
+	log.GetLog().Infof("PID: %d", os.Getpid())
+	log.GetLog().Infof("Discovery: '%s'", flagDiscoveryAddr)
+	log.GetLog().Infof("LinkRule: '%s'", getLinkRule())
+	log.GetLog().Infof("SvcGroup: '%s'", GetSvcGroup())
+	log.GetLog().Infof("SvcIndex: %d", GetSvcIndex())
+	log.GetLog().Infof("LANIP: '%s'", util.GetLocalIP())
+	log.GetLog().Infof("WANIP: '%s'", GetWANIP())
 }
 
 // 连接到服务发现, 建议在service.Init后, 以及服务器逻辑开始前调用
 func ConnectDiscovery() {
-	log.GetLog().Debug("Connecting to discovery '%s' ...", flagDiscoveryAddr)
+	log.GetLog().Debugf("Connecting to discovery '%s' ...", flagDiscoveryAddr)
 	sdConfig := memsd.DefaultConfig()
 	sdConfig.Address = flagDiscoveryAddr
 	discovery.Default = memsd.NewDiscovery(sdConfig)

@@ -74,9 +74,9 @@ func DeleteNotify(key, reason string) {
 	if valueMeta != nil {
 
 		if valueMeta.SvcName == "" {
-			log.GetLog().Info("DeleteValue '%s'  reason: %s", key, reason)
+			log.GetLog().Infof("DeleteValue '%s'  reason: %s", key, reason)
 		} else {
-			log.GetLog().Info("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
+			log.GetLog().Infof("DeregisterService '%s'  reason: %s", model.GetSvcIDByServiceKey(key), reason)
 		}
 	}
 

@@ -39,7 +39,7 @@ func (self *memDiscovery) connect(addr string) {
 			})
 		case *cellnet.SessionClosed:
 			self.token = ""
-			log.GetLog().Error("memsd discovery lost!")
+			log.GetLog().Errorf("memsd discovery lost!")
 
 		case *proto.AuthACK:
 
@@ -50,7 +50,7 @@ func (self *memDiscovery) connect(addr string) {
 				self.initWg.Done()
 			}
 
-			log.GetLog().Info("memsd discovery ready!")
+			log.GetLog().Infof("memsd discovery ready!")
 
 			self.triggerNotify("ready", 0)
 

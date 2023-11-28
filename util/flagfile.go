@@ -13,10 +13,10 @@ func ApplyFlagFromFile(fs *flag.FlagSet, filename string) error {
 		// 设置flagm
 		fg := fs.Lookup(key)
 		if fg != nil {
-			log.GetLog().Info("ApplyFlagFromFile: %s=%s", key, value)
+			log.GetLog().Infof("ApplyFlagFromFile: %s=%s", key, value)
 			fg.Value.Set(value)
 		} else {
-			log.GetLog().Error("ApplyFlagFromFile: flag not found, %s", key)
+			log.GetLog().Debugf("ApplyFlagFromFile: flag not found, %s", key)
 		}
 
 		return true
