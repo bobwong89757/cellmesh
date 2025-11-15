@@ -7,15 +7,21 @@ import (
 	"sort"
 )
 
+// ValueMeta 是KV存储中值的元数据
+// 包含键、值、服务名（如果是服务描述）和认证令牌
 type ValueMeta struct {
-	Key     string
-	Value   []byte
-	SvcName string // 服务才有此名字
-	Token   string
+	Key     string // 键名
+	Value   []byte // 值（字节数组）
+	SvcName string // 服务名称，只有服务描述才有此字段
+	Token   string // 认证令牌
 }
 
+// ErrDesc 是无效服务描述的占位符
 var ErrDesc = discovery.ServiceDesc{Name: "invalid desc"}
 
+// ValueAsServiceDesc 将值解析为服务描述
+// 返回:
+//   - *discovery.ServiceDesc: 解析后的服务描述，如果解析失败返回ErrDesc
 func (self *ValueMeta) ValueAsServiceDesc() *discovery.ServiceDesc {
 
 	var desc discovery.ServiceDesc
@@ -63,9 +69,11 @@ func VisitValue(callback func(*ValueMeta) bool) {
 	}
 }
 
+// PersistFile 是持久化文件的结构
+// 用于将内存中的数据保存到文件或从文件加载
 type PersistFile struct {
-	Version int
-	Values  []*ValueMeta
+	Version int          // 文件版本号
+	Values  []*ValueMeta // 值列表
 }
 
 var (

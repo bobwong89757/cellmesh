@@ -6,10 +6,16 @@ import (
 	"strings"
 )
 
+// Option 是KV操作的选项配置
 type Option struct {
-	PrettyPrint bool
+	PrettyPrint bool // 是否使用格式化输出（JSON缩进）
 }
 
+// getOpt 从选项列表中提取Option配置
+// 参数:
+//   - optList: 选项列表
+// 返回:
+//   - Option: 提取的选项配置
 func getOpt(optList ...interface{}) Option {
 
 	for _, opt := range optList {

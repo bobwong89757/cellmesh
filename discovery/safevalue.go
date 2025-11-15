@@ -6,18 +6,40 @@ import (
 	"reflect"
 )
 
-//KV中的Value最大不超过512K,
+// PackedValueSize 定义KV存储中单个分片的最大大小
+// 注意：由于底层使用JSON转base64编码，base64编码后的数据比原二进制大约33%，
+// 所以实际二进制数据不到512K就会达到限制，这里设置为300KB以确保安全
 const (
-	// 不能直接保存二进制，底层用Json转base64，base64的二进制比原二进制要大最终二进制不到512K就会达到限制
-	PackedValueSize = 300 * 1024
+	PackedValueSize = 300 * 1024 // 单个分片的最大大小，单位：字节
 )
 
+// rawGetter 是获取原始值的接口
+// 用于支持大值分片存储和读取的内部接口
 type rawGetter interface {
-	// 获取原始值
+	// GetRawValue 获取指定键的原始字节值
+	// 参数:
+	//   - key: 配置项的键名
+	// 返回:
+	//   - []byte: 原始字节数据
+	//   - error: 获取失败时返回错误信息
 	GetRawValue(key string) ([]byte, error)
+	
+	// GetValueDirect 直接获取配置值并赋值到指定变量
+	// 参数:
+	//   - key: 配置项的键名
+	//   - valuePtr: 指向目标变量的指针
+	// 返回:
+	//   - error: 获取失败时返回错误信息
 	GetValueDirect(key string, valuePtr interface{}) error
 }
 
+// getMultiKey 获取大值分片存储的所有键名列表
+// 大值会被分割成多个分片，使用key, key.1, key.2...的格式存储
+// 参数:
+//   - sd: 实现了rawGetter接口的对象
+//   - key: 主键名
+// 返回:
+//   - ret: 所有分片键名的列表，包括主键和分片键
 func getMultiKey(sd rawGetter, key string) (ret []string) {
 
 	mainKey := key
@@ -38,7 +60,15 @@ func getMultiKey(sd rawGetter, key string) (ret []string) {
 
 }
 
-// compress value按 key, key.1, key.2 ... 保存
+// SafeSetValue 安全地设置配置值，支持大值分片存储和压缩
+// 当值较大时，会自动分割成多个分片存储（key, key.1, key.2...）
+// 参数:
+//   - sd: 服务发现实例
+//   - key: 配置项的键名
+//   - value: 配置项的值，compress为true时必须是[]byte类型
+//   - compress: 是否启用压缩，启用后会对数据进行压缩后再存储
+// 返回:
+//   - error: 设置失败时返回错误信息
 func SafeSetValue(sd Discovery, key string, value interface{}, compress bool) error {
 	if compress {
 		cData, err := util.CompressBytes(value.([]byte))
@@ -94,6 +124,15 @@ func SafeSetValue(sd Discovery, key string, value interface{}, compress bool) er
 	}
 }
 
+// SafeGetValue 安全地获取配置值，支持大值分片读取和解压缩
+// 如果值被分片存储，会自动合并所有分片；如果被压缩，会自动解压
+// 参数:
+//   - sd: 服务发现实例，必须实现rawGetter接口
+//   - key: 配置项的键名
+//   - valuePtr: 指向目标变量的指针，用于接收配置值
+//   - decompress: 是否启用解压缩，如果存储时使用了压缩，这里必须为true
+// 返回:
+//   - error: 获取失败时返回错误信息
 func SafeGetValue(sd Discovery, key string, valuePtr interface{}, decompress bool) error {
 
 	rg := sd.(rawGetter)

@@ -7,6 +7,13 @@ import (
 	"strconv"
 )
 
+// BytesToAny 将字节数组转换为指定的类型
+// 支持的类型包括：int, float32, float64, bool, string，以及其他可通过JSON反序列化的类型
+// 参数:
+//   - data: 源字节数组
+//   - dataPtr: 指向目标变量的指针，类型必须匹配
+// 返回:
+//   - error: 转换失败时返回错误信息
 func BytesToAny(data []byte, dataPtr interface{}) error {
 
 	switch ret := dataPtr.(type) {
@@ -46,6 +53,12 @@ func BytesToAny(data []byte, dataPtr interface{}) error {
 	}
 }
 
+// ValueMetaToSlice 将ValueMeta数组转换为指定类型的切片
+// 参数:
+//   - pairs: ValueMeta数组，每个元素包含一个键值对
+//   - dataPtr: 指向目标切片的指针，切片的元素类型必须与ValueMeta中的值类型匹配
+// 返回:
+//   - error: 转换失败时返回错误信息
 func ValueMetaToSlice(pairs []ValueMeta, dataPtr interface{}) error {
 
 	vdata := reflect.Indirect(reflect.ValueOf(dataPtr))
@@ -73,6 +86,15 @@ func ValueMetaToSlice(pairs []ValueMeta, dataPtr interface{}) error {
 
 }
 
+// AnyToBytes 将任意类型的数据转换为字节数组
+// 支持的类型包括：int, int32, int64, uint32, uint64, float32, float64, bool, string
+// 其他类型会通过JSON序列化
+// 参数:
+//   - data: 要转换的数据
+//   - prettyPrint: 是否使用格式化输出（仅对JSON序列化有效）
+// 返回:
+//   - []byte: 转换后的字节数组
+//   - error: 转换失败时返回错误信息
 func AnyToBytes(data interface{}, prettyPrint bool) ([]byte, error) {
 
 	switch v := data.(type) {

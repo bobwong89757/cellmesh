@@ -7,7 +7,12 @@ import (
 	"time"
 )
 
-// numF=半字节
+// numFToMask 将半字节数量转换为对应的位掩码
+// numF表示半字节数量，1个半字节=4位=1个十六进制位
+// 参数:
+//   - numF: 半字节数量，范围1-16
+// 返回:
+//   - uint64: 对应的位掩码
 func numFToMask(numF uint) uint64 {
 	switch numF {
 	case 1:
@@ -47,21 +52,30 @@ func numFToMask(numF uint) uint64 {
 	}
 }
 
+// UUID64Component 是UUID64生成器的组件
+// 每个组件负责生成UUID的一部分
 type UUID64Component struct {
-	ValueSrc func() uint64 // 数值来源
-	NumF     uint          // 占用多少个F 1个F=0.5个字节=4位
+	ValueSrc func() uint64 // 数值来源函数，每次调用返回一个数值
+	NumF     uint          // 占用的半字节数量，1个F=0.5个字节=4位
 }
 
+// UUID64Generator 是64位UUID生成器
+// 通过组合多个组件来生成唯一的64位ID
+// 支持时间戳、序列号、固定值等组件类型
 type UUID64Generator struct {
-	seqGen   uint64
-	comSet   []*UUID64Component
-	genGuard sync.Mutex
+	seqGen   uint64              // 序列号生成器的当前值
+	comSet   []*UUID64Component  // 组件列表
+	genGuard sync.Mutex          // 保护生成过程的互斥锁
 }
 
 const (
-	MaxNumFInt64 = 16
+	MaxNumFInt64 = 16 // int64类型最多支持16个半字节（64位）
 )
 
+// AddComponent 添加一个组件到生成器
+// 参数:
+//   - com: 要添加的组件
+// 注意: 所有组件的总半字节数不能超过16，否则会panic
 func (self *UUID64Generator) AddComponent(com *UUID64Component) {
 
 	// 检查范围
@@ -75,6 +89,9 @@ func (self *UUID64Generator) AddComponent(com *UUID64Component) {
 	}
 }
 
+// UsedNumF 计算已使用的半字节总数
+// 返回:
+//   - ret: 已使用的半字节数量
 func (self *UUID64Generator) UsedNumF() (ret uint) {
 
 	for _, com := range self.comSet {
@@ -84,11 +101,19 @@ func (self *UUID64Generator) UsedNumF() (ret uint) {
 	return
 }
 
+// LeftNumF 计算剩余的可用半字节数
+// 返回:
+//   - ret: 剩余的半字节数量
 func (self *UUID64Generator) LeftNumF() (ret uint) {
 	return MaxNumFInt64 - self.UsedNumF()
 }
 
-// 序列号组件
+// AddSeqComponent 添加一个序列号组件
+// 序列号组件每次生成时自动递增
+// 参数:
+//   - numF: 占用的半字节数量
+//   - init: 初始序列号值
+// 注意: 初始值必须在指定范围内，否则会panic
 func (self *UUID64Generator) AddSeqComponent(numF uint, init uint64) {
 
 	if init&numFToMask(numF) != init {
@@ -107,12 +132,22 @@ func (self *UUID64Generator) AddSeqComponent(numF uint, init uint64) {
 
 }
 
+// numFRange 计算指定半字节数量能表示的最大值
+// 参数:
+//   - numF: 半字节数量
+// 返回:
+//   - uint: 最大值（16^numF - 1）
 func numFRange(numF uint) uint {
 
 	return uint(math.Pow(16, float64(numF))) - 1
 }
 
-// 固定值组件
+// AddConstComponent 添加一个固定值组件
+// 固定值组件每次生成时返回相同的值
+// 参数:
+//   - numF: 占用的半字节数量
+//   - constNumber: 固定值
+// 注意: 固定值必须在指定范围内，否则会panic
 func (self *UUID64Generator) AddConstComponent(numF uint, constNumber uint64) {
 
 	uconst := uint64(constNumber)
@@ -131,9 +166,12 @@ func (self *UUID64Generator) AddConstComponent(numF uint, constNumber uint64) {
 
 }
 
-const timeStartPoint = 946656000 // 这里设置参考点为2000/1/1 0:0:0，延迟出现2039年Unix时间戳溢出问题
+const timeStartPoint = 946656000 // 时间参考点：2000/1/1 0:0:0的Unix时间戳，用于延迟2039年时间戳溢出问题
 
-// 添加时间组件
+// AddTimeComponent 添加一个时间戳组件
+// 时间戳组件返回当前时间相对于参考点的秒数
+// 参数:
+//   - numF: 占用的半字节数量
 func (self *UUID64Generator) AddTimeComponent(numF uint) {
 	self.AddComponent(&UUID64Component{
 		ValueSrc: func() uint64 {
@@ -145,7 +183,10 @@ func (self *UUID64Generator) AddTimeComponent(numF uint) {
 
 }
 
-// 按给定的组件规则生成一个UUID
+// Generate 按照组件规则生成一个64位UUID
+// 从右到左组合各个组件的值
+// 返回:
+//   - ret: 生成的64位UUID
 func (self *UUID64Generator) Generate() (ret uint64) {
 
 	self.genGuard.Lock()
@@ -163,6 +204,9 @@ func (self *UUID64Generator) Generate() (ret uint64) {
 	return
 }
 
+// NewUUID64Generator 创建一个新的UUID64生成器
+// 返回:
+//   - *UUID64Generator: UUID生成器实例
 func NewUUID64Generator() *UUID64Generator {
 
 	return &UUID64Generator{}

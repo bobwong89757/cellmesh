@@ -9,7 +9,8 @@ import (
 	"github.com/bobwong89757/cellnet/proc/tcp"
 )
 
-// 服务互联消息处理
+// SvcEventHooker 是服务互联消息处理的Hooker
+// 负责处理服务间的连接建立、身份确认和断开连接等事件
 type SvcEventHooker struct {
 }
 

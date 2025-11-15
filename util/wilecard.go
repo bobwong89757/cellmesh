@@ -1,6 +1,12 @@
 package meshutil
 
-// https://siongui.github.io/2017/04/11/go-wildcard-pattern-matching/
+// stringToRuneSlice 将字符串转换为rune切片
+// 用于支持Unicode字符的通配符匹配
+// 参考: https://siongui.github.io/2017/04/11/go-wildcard-pattern-matching/
+// 参数:
+//   - s: 源字符串
+// 返回:
+//   - []rune: rune切片
 func stringToRuneSlice(s string) []rune {
 	var r []rune
 	for _, runeValue := range s {
@@ -9,6 +15,13 @@ func stringToRuneSlice(s string) []rune {
 	return r
 }
 
+// initLookupTable 初始化动态规划查找表
+// 用于通配符模式匹配的缓存表
+// 参数:
+//   - row: 行数
+//   - column: 列数
+// 返回:
+//   - [][]bool: 初始化的二维布尔数组
 func initLookupTable(row, column int) [][]bool {
 	lookup := make([][]bool, row)
 	for i := range lookup {
@@ -17,7 +30,16 @@ func initLookupTable(row, column int) [][]bool {
 	return lookup
 }
 
-// Function that matches input str with given wildcard pattern
+// WildcardPatternMatch 使用通配符模式匹配字符串
+// 支持的通配符:
+//   - '?' 匹配任意单个字符
+//   - '*' 匹配任意多个字符（包括0个）
+// 使用动态规划算法实现
+// 参数:
+//   - str: 要匹配的字符串
+//   - pattern: 通配符模式
+// 返回:
+//   - bool: 如果匹配返回true，否则返回false
 func WildcardPatternMatch(str, pattern string) bool {
 	s := stringToRuneSlice(str)
 	p := stringToRuneSlice(pattern)

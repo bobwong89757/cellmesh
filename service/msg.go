@@ -11,9 +11,11 @@ import (
 	"reflect"
 )
 
+// ServiceIdentifyACK 是服务身份确认消息
+// 当服务间建立连接时，用于交换服务身份信息，让双方知道对方的服务名称和ID
 type ServiceIdentifyACK struct {
-	SvcName string
-	SvcID   string
+	SvcName string // 服务名称，如"game"、"login"等
+	SvcID   string // 服务的唯一标识ID
 }
 
 func (self *ServiceIdentifyACK) String() string { return fmt.Sprintf("%+v", *self) }
@@ -27,11 +29,20 @@ func init() {
 }
 
 var (
-	ErrInvalidRelayMessage         = errors.New("invalid relay message")
+	// ErrInvalidRelayMessage 表示事件不是有效的relay消息
+	ErrInvalidRelayMessage = errors.New("invalid relay message")
+	// ErrInvalidRelayPassthroughType 表示透传数据类型不支持
 	ErrInvalidRelayPassthroughType = errors.New("invalid relay passthrough type")
 )
 
-// 获取Event中relay的透传数据
+// GetPassThrough 从relay事件中提取透传数据
+// 透传数据用于在消息转发过程中携带额外的上下文信息，如用户ID等
+// 支持的类型：*int64, *[]int64, *string
+// 参数:
+//   - ev: cellnet事件，必须是relay.RecvMsgEvent类型
+//   - ptrList: 指向目标变量的指针列表，用于接收透传数据
+// 返回:
+//   - error: 提取失败时返回错误信息
 func GetPassThrough(ev cellnet.Event, ptrList ...interface{}) error {
 	if relayEvent, ok := ev.(*relay.RecvMsgEvent); ok {
 
@@ -56,7 +67,12 @@ func GetPassThrough(ev cellnet.Event, ptrList ...interface{}) error {
 
 }
 
-// 回复event来源一个消息
+// Reply 向事件来源回复一个消息
+// 这是一个便捷函数，用于在事件处理中快速回复消息
+// 参数:
+//   - ev: cellnet事件，必须实现replyEvent接口
+//   - msg: 要回复的消息对象
+// 注意: 如果事件不支持Reply方法，会触发panic
 func Reply(ev cellnet.Event, msg interface{}) {
 
 	type replyEvent interface {

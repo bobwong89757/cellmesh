@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	ServiceKeyPrefix = "_svcdesc_"
+	ServiceKeyPrefix = "_svcdesc_" // 服务描述在KV存储中的键前缀
 )
 
 var (
-	Queue cellnet.EventQueue
-	IDGen = meshutil.NewUUID64Generator()
+	Queue cellnet.EventQueue              // 事件队列，用于处理所有网络事件
+	IDGen = meshutil.NewUUID64Generator() // UUID生成器，用于生成唯一ID
 
-	Listener cellnet.Peer
-	Debug    bool
+	Listener cellnet.Peer // 监听器Peer，用于接收客户端连接
+	Debug    bool         // 调试模式标志
 
-	Version = "0.1.0"
+	Version = "0.1.0" // 版本号
 )
 
 func IsServiceKey(rawkey string) bool {
