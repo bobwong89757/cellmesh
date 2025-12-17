@@ -1,9 +1,9 @@
 github.com/ahmetb/go-linq v3.0.0+incompatible h1:qQkjjOXKrKOTy83X8OpRmnKflXKQIL/mC/gMVVDMhOA=
 github.com/ahmetb/go-linq v3.0.0+incompatible/go.mod h1:PFffvbdbtw+QTB0WKRP0cNht7vnCfnGlEpak/DVg5cY=
-github.com/bobwong89757/cellnet v1.4.6 h1:flSmObwBw31XIXoiWIYM0tbBTIR/k+ejlBEOgDRWZ78=
-github.com/bobwong89757/cellnet v1.4.6/go.mod h1:qh69jPfGYKBOEIE8fIKaHHObMvpZJS7QGrRiVbHisrk=
-github.com/bobwong89757/gnbutils v0.1.23 h1:faNtwy26KA0ZKS0pOPjz5VzeEX2l11HJ/a4bp2OomrE=
-github.com/bobwong89757/gnbutils v0.1.23/go.mod h1:WMGKgwLqQLOAAs/T+Z3jggaqTQQrjyk86NcpV5gP9/Q=
+github.com/bobwong89757/cellnet v1.5.4 h1:YrGvTdFutIcErlDdKv/urLdwCVu2uA1ZfFRhN4wuWxQ=
+github.com/bobwong89757/cellnet v1.5.4/go.mod h1:qh69jPfGYKBOEIE8fIKaHHObMvpZJS7QGrRiVbHisrk=
+github.com/bobwong89757/gnbutils v0.1.26 h1:d5TxLmEdPrWT3VP9Usr41wKDMb+1nWXuy3sYnrOcjG0=
+github.com/bobwong89757/gnbutils v0.1.26/go.mod h1:WMGKgwLqQLOAAs/T+Z3jggaqTQQrjyk86NcpV5gP9/Q=
 github.com/bobwong89757/golexer v0.1.0 h1:wQB2sDtWhnmAxaOR73PYWM96Aq/Sq66zQwg2AwdDPB8=
 github.com/bobwong89757/golexer v0.1.0/go.mod h1:fl5IIzV273ScYPF1lDgmKiQWQ0/KUO2B6OY75/CK5yI=
 github.com/bobwong89757/goobjfmt v0.1.0 h1:QplvSAyf081PXCliNKiuUqUQFbEYBAvd06BrvamJ4z4=
