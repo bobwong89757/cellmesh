@@ -9,7 +9,6 @@ cellmesh/
 ├── discovery/          # 服务发现相关代码
 ├── service/            # 服务通信基础代码
 ├── util/               # 通用工具代码
-├── helpers/            # 辅助工具
 ├── tool/               # 代码生成工具
 ├── dummy.go            # 占位文件，用于go get
 ├── go.mod              # Go模块依赖管理文件
@@ -362,23 +361,6 @@ util/
 
 ---
 
-## helpers/ - 辅助工具包
-
-辅助工具代码。
-
-```
-helpers/
-└── helpers_mgr.go      # 辅助工具管理器
-```
-
-### helpers/ 文件说明
-
-- **helpers_mgr.go**: 
-  - `MConfig`全局YAML配置工具实例
-  - 提供YAML配置的读取和缓存功能
-
----
-
 ## tool/ - 工具包
 
 代码生成工具，用于生成协议相关的代码。
@@ -417,8 +399,7 @@ cellmesh项目采用清晰的模块化设计：
 1. **discovery包**: 提供统一的服务发现接口和memsd实现
 2. **service包**: 提供服务通信的基础功能
 3. **util包**: 提供通用的工具函数
-4. **helpers包**: 提供辅助工具
-5. **tool包**: 提供代码生成工具
+4. **tool包**: 提供代码生成工具
 
 每个包都有明确的职责，便于维护和扩展。
 
